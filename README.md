@@ -1,126 +1,169 @@
-# Online Calculator using Spring MVC framework (Non-Boot)
+﻿# 🔢 Online Calculator using Spring MVC (Non-Boot)
 
-## 📌 Overview
+![Java](https://img.shields.io/badge/Java-17-orange)
+![Spring MVC](https://img.shields.io/badge/Spring%20MVC-5.x-6DB33F?logo=spring&logoColor=6DB33F)
+![JSP](https://img.shields.io/badge/View-JSP-blue)
+![Maven](https://img.shields.io/badge/Build-Maven-C71A36?logo=apachemaven&logoColor=C71A36)
+![Tomcat](https://img.shields.io/badge/Server-Apache%20Tomcat-F8DC75?logo=apachetomcat&logoColor=white)
 
-This project is a simple web-based calculator built using **Spring MVC without Spring Boot**.
-It intentionally avoids auto-configuration to demonstrate core MVC concepts such as request handling, view resolution, and manual configuration.
-
----
-
-## 🎯 Purpose
-
-The goal of this project is to clearly demonstrate the **Spring MVC request lifecycle** and internal working by configuring everything manually instead of relying on Spring Boot.
+A simple web-based calculator built using the **Spring MVC framework without Spring Boot**. This project demonstrates the fundamentals of the Spring MVC architecture by manually configuring the application using XML, making it ideal for understanding the request lifecycle and MVC workflow.
 
 ---
 
-## 🏗️ Tech Stack
+## ✨ Features
 
-* Java 17
-* Spring MVC (5.x)
-* JSP (Java Server Pages)
-* Maven
-* Apache Tomcat (External Server)
+- Perform basic arithmetic operations:
+  - Addition
+  - Subtraction
+  - Multiplication
+  - Division
+- Handles division by zero gracefully
+- Clean and responsive JSP-based user interface
+- Navigation between input and result pages
+- Manual Spring MVC configuration without Spring Boot
+
+---
+
+## 🛠️ Tech Stack
+
+| Category | Technology |
+|----------|------------|
+| Language | Java 17 |
+| Framework | Spring MVC 5.x |
+| View Technology | JSP |
+| Build Tool | Maven |
+| Web Server | Apache Tomcat |
+| Styling | CSS3 |
 
 ---
 
 ## 📁 Project Structure
 
-```
-src/
- ├── main/
- │    ├── java/
- │    │     └── com.Cal3/
- │    │           └── CalcController.java
- │    │
- │    └── webapp/
- │          ├── WEB-INF/
- │          │     ├── web.xml
- │          │     ├── spring-servlet.xml
- │          │     └── views/
- │          │           ├── Calculator3.jsp
- │          │           └── result.jsp
- │          │
- │          └── resources/
- │                └── css/
- │                     └── style.css
-```
-
----
-
-## 🔁 MVC Flow
-
-```
-Browser → DispatcherServlet → Controller → Model → ViewResolver → JSP
+```text
+OnlineCalculator-Using-SpringMVC/
+├── src/
+│   └── main/
+│       ├── java/
+│       │   └── com.Cal3/
+│       │       └── CalcController.java
+│       └── webapp/
+│           ├── WEB-INF/
+│           │   ├── web.xml
+│           │   ├── spring-servlet.xml
+│           │   └── views/
+│           │       ├── Calculator3.jsp
+│           │       └── result.jsp
+│           └── resources/
+│               └── css/
+│                   └── style.css
+├── pom.xml
+└── README.md
 ```
 
 ---
 
-## ⚙️ Features
+## 🔄 Spring MVC Request Flow
 
-* Perform basic arithmetic operations:
-
-  * Addition
-  * Subtraction
-  * Multiplication
-  * Division
-* Handles division by zero
-* Clean UI using custom CSS
-* Navigation between input and result pages
-
----
-
-## 🧠 Key Concepts Demonstrated
-
-* **DispatcherServlet**: Central request handler configured via `web.xml`
-* **Controller Layer**: Uses `@Controller`, `@GetMapping`, `@PostMapping`
-* **View Resolution**: Logical view names mapped to JSP via `InternalResourceViewResolver`
-* **Model Handling**: Passing data from controller to view
-* **Context Path Awareness**: Correct URL handling in WAR-based deployment
-
----
-
-## 🚀 How to Run
-
-### 1. Build the project
-
-Run the following command in the project root directory (where `pom.xml` is located):
-
+```text
+Browser
+   │
+   ▼
+DispatcherServlet
+   │
+   ▼
+Controller
+   │
+   ▼
+Model
+   │
+   ▼
+ViewResolver
+   │
+   ▼
+JSP View
 ```
+
+---
+
+## 🧠 Concepts Demonstrated
+
+- Manual configuration using `web.xml`
+- Configuring `DispatcherServlet`
+- Spring MVC request mapping with `@Controller`
+- `@GetMapping` and `@PostMapping`
+- Passing data using the `Model`
+- View resolution with `InternalResourceViewResolver`
+- JSP-based view rendering
+- WAR deployment on Apache Tomcat
+- Context path handling in servlet applications
+
+---
+
+## ⚙️ Getting Started
+
+### Prerequisites
+
+- Java 17
+- Maven
+- Apache Tomcat 9 or later
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/Atharva-Shelke/OnlineCalculator-Using-SpringMVC.git
+```
+
+### Build the Project
+
+```bash
 mvn clean package
 ```
 
-### 2. Deploy WAR file
+A WAR file will be generated in the `target` directory.
 
-Copy the generated file:
+### Deploy to Tomcat
 
-```
+Copy the generated WAR file:
+
+```text
 target/OnlineCalculator.war
 ```
 
-into your Apache Tomcat `webapps/` directory.
+to your Tomcat `webapps/` directory.
 
----
+Start the Tomcat server and open:
 
-### 3. Start Tomcat server
-
----
-
-### 4. Access application
-
-```
+```text
 http://localhost:8080/OnlineCalculator/
 ```
 
 ---
 
-## ⚠️ Important Notes
+## 📸 Screenshots
 
-* This project **does not use Spring Boot**
-* Configuration is done manually using:
+### Calculator Page
 
-  * `web.xml`
-  * `spring-servlet.xml`
-* Uses JSP instead of Thymeleaf
-* Requires external servlet container (Tomcat)
+![Calculator Page](screenshots/calculator-page.png)
+
+### Result Page
+
+![Result Page](screenshots/result-page.png)
+
+### Calculator Page
+
+![Options Page](screenshots/options-page.png)
+
+### Result Page
+
+![Error Page](screenshots/error-page.png)
 
 ---
+
+## 📚 What I Learned
+
+- Spring MVC architecture and request lifecycle
+- Manual XML-based Spring configuration
+- DispatcherServlet configuration
+- Controller and view communication
+- JSP rendering with View Resolver
+- WAR packaging and deployment on Apache Tomcat
